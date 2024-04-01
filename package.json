@@ -1,0 +1,62 @@
+{
+  "name": "barcode-tool",
+  "version": "0.1.0",
+  "description": "lightweight npm package that utilizes the Barcode Detection API to enable barcode scanning directly in web browsers. Easily integrate barcode scanning functionality into your web applications for inventory management, product identification, and more.",
+  "scripts": {
+    "rollup": "rollup -c",
+    "test": "jest",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
+  },
+  "author": "Jer Carlo Catallo",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.22.15",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/jest": "^28.1.6",
+    "@types/react": "^18.0.15",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "babel-loader": "^8.2.3",
+    "eslint": "^8.52.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^29.7.0",
+    "rollup": "^2.60.0",
+    "rollup-plugin-dts": "^4.0.1",
+    "typescript": "^4.7.4"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "barcode",
+    "scanner",
+    "detection",
+    "barcode-detection",
+    "web-api",
+    "browser",
+    "data-matrix",
+    "ean-13",
+    "ean-8",
+    "qr-code",
+    "code-128",
+    "code-39",
+    "upc-a",
+    "upc-e",
+    "codabar",
+    "itf",
+    "pdf417",
+    "aztec"
+  ]
+}

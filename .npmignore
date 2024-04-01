@@ -1,0 +1,12 @@
+node_modules
+.git
+.DS_Store
+src
+.gitignore
+babel.config.js
+jest.config.js
+package-lock.json
+rollup.config.js
+tsconfig.json
+.eslintrc.js
+.npmignore
