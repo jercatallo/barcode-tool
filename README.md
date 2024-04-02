@@ -1,8 +1,8 @@
-### barcode-tool
+## barcode-tool
 
 `barcode-tool` is a lightweight npm package that utilizes the Barcode Detection API to enable barcode scanning directly in web browsers. Easily integrate barcode scanning functionality into your web applications for inventory management, product identification, and more.
 
-#### Supported Barcode Formats
+## Supported Barcode Formats
 
 - aztec
 - code_128
@@ -20,7 +20,7 @@
 - unknown
 
 
-#### Installation
+## Installation
 
 You can install the `barcode-tool` via npm:
 
@@ -29,7 +29,7 @@ npm install barcode-tool
 ```
 
 
-#### Usage
+## Usage
 
 <strong>detectBarcode </strong> 
 - method for getting the value in the provided barcode image.
@@ -75,7 +75,7 @@ try {
 }
 ```
 
-#### Using Web APIs
+## Using Web APIs
 
 This package utilizes the Barcode Detection API provided by modern web browsers to perform barcode scanning directly in the browser environment. It's important to note the following regarding the use of web APIs:
 
@@ -88,3 +88,7 @@ This package utilizes the Barcode Detection API provided by modern web browsers 
 - **Stay Updated**: Keep track of any updates or changes to the APIs by regularly reviewing the official documentation. This helps ensure that your package remains compliant with any changes made by the API providers.
 
 For more information on using web APIs and compliance with terms of service, refer to the documentation provided by the respective browser vendors.
+
+# MIT License
+
+See the [LICENSE](https://github.com/jercatallo/barcode-tool/blob/main/LICENSE) file
