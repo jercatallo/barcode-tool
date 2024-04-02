@@ -85,7 +85,7 @@ const handleGetSupportedFormats = async () => {
 ## Sample usage with script tag
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@0.1.1/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.1/dist/cjs/index.js"></script>
 </head>
 
 
