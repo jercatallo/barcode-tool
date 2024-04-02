@@ -28,9 +28,14 @@ You can install the `barcode-tool` via npm:
 npm install barcode-tool
 ```
 
+or importing the package with script tag via JSDelivr CDN:
+```html
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.0/dist/cjs/index.js"></script>
+</head>
+```
 
-## Usage
-
+## Methods 
 <strong>detectBarcode </strong> 
 - method for getting the value in the provided barcode image.
 
@@ -40,39 +45,78 @@ Name | Type | Description
 `image` | HTMLElement <br>Blob<br> HTMLCanvasElement<br> HTMLImageElement<br> HTMLVideoElement<br> ImageBitmap<br> ImageData<br> SVGImageElement <br>  VideoFrame <br> OffscreenCanvas |   The image containing the barcode.
 `formats` | string[] (optional) | 	Optional array of barcode formats to detect.
 
+<strong>getSupportedFormats </strong> 
+- method that specify all of the barcode formats that are available for detection.
+
+## Sample usage with package manager/bundler
+
  
 ##### Sample Usage
-```
+```javascript
 import { detectBarcode } from 'barcode-tool';
 
 const imageElement = document.getElementById('barcode-image');
 
-// Specify optional formats to detect
-const formats = ['ean_13', 'qr_code'];
-
-try {
-    const barcodes = await detectBarcode({ image: imageElement, formats });
-    console.log('Detected Barcodes:', barcodes);
-} catch (error) {
-    console.error('Error detecting barcodes:', error.message);
+const handleDetectBarcode = async () => {
+    try {
+         // Specify optional formats to detect
+        const formats = ['ean_13', 'qr_code'];
+        const barcodes = await detectBarcode({ image: imageElement, formats });
+    } catch (error) {
+        console.error('Error on detecting barcodes:', error.message);
+    }
 }
 ```
 
-
-
-<strong>getSupportedFormats </strong> 
-- method that specify all of the barcode formats that are available for detection.
-
-##### Sample Usage
-```
+```javascript
 import { getSupportedFormats } from 'barcode-tool';
 
-try {
-    const supportedFormats = await getSupportedFormats();
-    console.log('Supported Formats:', supportedFormats);
-} catch (error) {
-    console.error('Error getting supported formats:', error.message);
+const handleGetSupportedFormats = async () => {
+    try {
+        const supportedFormats = await getSupportedFormats();
+        console.log('Supported Formats:', supportedFormats);
+    } catch (error) {
+        console.error('Error getting supported formats:', error.message);
+    }
 }
+
+```
+
+## Sample usage with script tag
+```html
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@0.1.1/dist/cjs/index.js"></script>
+</head>
+
+
+<img id="imageEl" src="your-image-element.jpg" />
+
+<script>
+    const handleDetectBarcode = async () => {
+        try {
+            // Specify optional formats to detect
+            const formats = ['ean_13', 'qr_code'];
+            const barcodes = await detectBarcode({ image: imageElement, formats });
+        } catch (error) {
+            console.error('Error on detecting barcodes:', error.message);
+        }
+    }
+
+    const handleGetSupportedFormats = async () => {
+        try {
+            const supportedFormats = await getSupportedFormats();
+            console.log('Supported Formats:', supportedFormats);
+        } catch (error) {
+            console.error('Error getting supported formats:', error.message);
+        }
+    }
+    window.onload = function () {
+        // Document is ready
+        console.log('Document is ready');
+        getBarcodes();
+        handleGetSupportedFormats();
+    };
+</script>
 ```
 
 ## Using Web APIs
