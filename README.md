@@ -31,7 +31,7 @@ npm install barcode-tool
 or importing the package with script tag via JSDelivr CDN:
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.0/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.2/dist/cjs/index.js"></script>
 </head>
 ```
 
@@ -85,7 +85,7 @@ const handleGetSupportedFormats = async () => {
 ## Sample usage with script tag
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.1/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.2/dist/cjs/index.js"></script>
 </head>
 
 
@@ -94,9 +94,11 @@ const handleGetSupportedFormats = async () => {
 <script>
     const handleDetectBarcode = async () => {
         try {
+            const imageElement = document.getElementById('imageEl');
             // Specify optional formats to detect
             const formats = ['ean_13', 'qr_code'];
             const barcodes = await detectBarcode({ image: imageElement, formats });
+            console.log("handleDetectBarcode ~ barcodes:", barcodes)
         } catch (error) {
             console.error('Error on detecting barcodes:', error.message);
         }
