@@ -2,7 +2,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
-import eslint from '@rollup/plugin-eslint';
 
 export default [
   {
@@ -11,25 +10,23 @@ export default [
       {
         file: 'dist/cjs/index.js',
         format: "cjs",
-        sourcemap: true,
+        sourcemap: false,
       },
       {
         file: 'dist/esm/index.js',
         format: "esm",
-        sourcemap: true,
+        sourcemap: false,
       },
     ],
     plugins: [
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
-      eslint({})
+      typescript({ tsconfig: "./tsconfig.json" })
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "src/index.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.(css|less|scss)$/],
   },
 ];

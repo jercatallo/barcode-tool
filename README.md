@@ -2,7 +2,7 @@
 
 `barcode-tool` is a lightweight npm package that utilizes the Barcode Detection API to enable barcode scanning directly in web browsers. Easily integrate barcode scanning functionality into your web applications for inventory management, product identification, and more.
 
-## Supported Barcode Formats
+## Supported Barcode Detector Formats
 
 - aztec
 - code_128
@@ -19,6 +19,24 @@
 - upc_e
 - unknown
 
+## Supported Barcode Generator Formats
+- CODE128 (automatic mode switching)
+- CODE128 A/B/C (force mode)
+- EAN-13
+- EAN-8
+- EAN-5
+- EAN-2
+- UPC (A)
+- UPC (E)
+- CODE39
+- ITF
+- ITF-14
+- MSI10
+- MSI11
+- MSI1010
+- MSI1110
+- Pharmacode
+- Codabar
 
 ## Installation
 
@@ -28,40 +46,95 @@ You can install the `barcode-tool` via npm:
 npm install barcode-tool
 ```
 
+or via yarn:
+
+```bash
+yarn add barcode-tool
+```
+
 or importing the package with script tag via JSDelivr CDN:
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.3/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.0/dist/cjs/index.js"></script>
+</head>
+```
+    
+Alternatively, you can import the package with a script tag using Unpkg CDN:
+```html
+<head>
+    <script src="https://unpkg.com/barcode-tool@1.1.0/dist/cjs/index.js"></script>
 </head>
 ```
 
 ## Methods 
-<strong>detectBarcode </strong> 
-- method for getting the value in the provided barcode image.
+#### detectBarcode
+- Method for getting the value in the provided barcode image.
 
-##### Parameters
+##### detectBarcode Parameters
 Name | Type | Description
 -------|-------------------|----
-`image` | HTMLElement <br>Blob<br> HTMLCanvasElement<br> HTMLImageElement<br> HTMLVideoElement<br> ImageBitmap<br> ImageData<br> SVGImageElement <br>  VideoFrame <br> OffscreenCanvas |   The image containing the barcode.
+`payload` | Object | An object containing the following properties:
+`image` | HTMLElement <br>Blob<br> HTMLCanvasElement<br> HTMLImageElement<br> HTMLVideoElement<br> ImageBitmap<br> ImageData<br> SVGImageElement |   The image containing the barcode.
 `formats` | string[] (optional) | 	Optional array of barcode formats to detect.
 
-<strong>getSupportedFormats </strong> 
-- method that specify all of the barcode formats that are available for detection.
+<br/>
+
+#### generateBarcode
+- Method for generating barcode
+
+##### generateBarcode Parameters
+Name | Type | Description
+-------|-------------------|----
+`payload` | Object | An object containing the following properties:
+`elementId` | string |   The image containing the barcode.
+`value` | string | The value to encode in the barcode.
+`options` | BarcodeOptions (optional) | Optional settings for customizing the appearance of the barcode.
+
+<br/>
+
+##### BarcodeOptions Parameter
+
+| Name           | Type           | Description                                                |
+|----------------|----------------|------------------------------------------------------------|
+| `options.format`      | string (optional) | The format of the barcode. Default is auto.                |
+| `options.width`       | number (optional) | The width of the barcode bars. Default is 2.               |
+| `options.height`      | number (optional) | The height of the barcode bars. Default is 100.            |
+| `options.displayValue`| boolean (optional)| Whether to display the value below the barcode. Default is true. |
+| `options.text`        | string (optional) | Additional text to display below the barcode.             |
+| `options.fontOptions` | string (optional) | Additional font options for the text below the barcode.   |
+| `options.font`        | string (optional) | The font family for the text below the barcode. Default is monospace. |
+| `options.textAlign`   | string (optional) | The alignment of the text below the barcode. Default is center. |
+| `options.textPosition`| string (optional) | The position of the text below the barcode. Default is bottom. |
+| `options.textMargin`  | number (optional) | The margin between the barcode and the text below it. Default is 2. |
+| `options.fontSize`    | number (optional) | The font size for the text below the barcode. Default is 20. |
+| `options.background`  | string (optional) | The background color of the barcode. Default is #ffffff.  |
+| `options.lineColor`   | string (optional) | The color of the barcode bars. Default is #000000.        |
+| `options.margin`      | number (optional) | The margin around the barcode. Default is 10.             |
+| `options.marginTop`   | number (optional) | The top margin around the barcode.                        |
+| `options.marginBottom`| number (optional) | The bottom margin around the barcode.                     |
+| `options.marginLeft`  | number (optional) | The left margin around the barcode.                       |
+| `options.marginRight` | number (optional) | The right margin around the barcode.                      |
+| `options.valid`       | function (optional) | A callback function to validate the generated barcode.    |
+
+<br/>
+
+#### getSupportedFormats 
+- Method that specify all of the barcode formats that are available for detection, and generation of barcodes.
 
 ## Sample usage with package manager/bundler
 
  
-##### Sample Usage
+#### Sample Usage
 ```javascript
 import { detectBarcode } from 'barcode-tool';
 
 const handleDetectBarcode = async () => {
     try {
-        const imageElement = document.getElementById('barcode-image');
+        const elementWithBarcode = document.getElementById('element-with-barcode');
 
          // Specify optional formats to detect
         const formats = ['ean_13', 'qr_code'];
-        const barcodes = await detectBarcode({ image: imageElement, formats });
+        const barcodes = await detectBarcode({ image: elementWithBarcode, formats });
         console.log("handleDetectBarcode ~ barcodes:", barcodes)
     } catch (error) {
         console.error('Error on detecting barcodes:', error.message);
@@ -83,10 +156,26 @@ const handleGetSupportedFormats = async () => {
 
 ```
 
+```javascript
+import { generateBarcode } from 'barcode-tool';
+
+const handleGenerateBarcode = () => {
+    try {
+        const barcodeContainerElement = document.getElementById('barcode-container');
+        const payload = { elementId: 'barcode-container', value: 'your-barcode-value' };
+        const options = { /* your BarcodeOptions here */ };
+        generateBarcode({ ...payload, options });
+    } catch (error) {
+        console.error('Error generating barcode:', error.message);
+    }
+}
+
+```
+
 ## Sample usage with script tag
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.3/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.0/dist/cjs/index.js"></script>
 </head>
 
 
@@ -95,7 +184,8 @@ const handleGetSupportedFormats = async () => {
 <script>
     const handleDetectBarcode = async () => {
         try {
-            const imageElement = document.getElementById('imageEl');
+            const elementWithBarcode = document.getElementById('element-with-barcode');
+
             // Specify optional formats to detect
             const formats = ['ean_13', 'qr_code'];
             const barcodes = await detectBarcode({ image: imageElement, formats });
@@ -113,28 +203,37 @@ const handleGetSupportedFormats = async () => {
             console.log("handleGetSupportedFormats ~ error:", error)
         }
     }
+
+    const handleGenerateBarcode = () => {
+        try {
+            const barcodeContainerElement = document.getElementById('barcode-container');
+            const payload = { elementId: 'barcode-container', value: 'your-barcode-value' };
+            const options = { /* your BarcodeOptions here */ };
+            generateBarcode({ ...payload, options });
+        } catch (error) {
+            console.error('Error generating barcode:', error.message);
+        }
+    }
+
     window.onload = function () {
         // Document is ready
         console.log('Document is ready');
         getBarcodes();
         handleGetSupportedFormats();
+        handleGenerateBarcode();
     };
 </script>
 ```
 
-## Using Web APIs
+## Third-Party Softwares
 
-This package utilizes the Barcode Detection API provided by modern web browsers to perform barcode scanning directly in the browser environment. It's important to note the following regarding the use of web APIs:
+barcode-tool is only made possible with the use and help of amazing open-source third-party softwares:
 
-- **Compliance with Terms of Service**: Ensure that your usage of web APIs, including the Barcode Detection API, complies with the terms of service provided by the respective browser vendors (e.g., Google, Mozilla). Review and adhere to any usage restrictions or requirements specified in the terms of service.
+**Barcode Detection API**
 
-- **Official Documentation**: Rely on the official documentation provided by the browser vendors for implementing and using their APIs. This ensures that you're using the APIs correctly and in accordance with their intended usage.
+**JsBarcode, [MIT](https://github.com/lindell/JsBarcode/blob/master/MIT-LICENSE.txt)**
 
-- **Attribution**: If required by the terms of service or if you want to give credit to the browser vendors, include proper attribution in your documentation or README file. This shows transparency and respect for the API providers.
-
-- **Stay Updated**: Keep track of any updates or changes to the APIs by regularly reviewing the official documentation. This helps ensure that your package remains compliant with any changes made by the API providers.
-
-For more information on using web APIs and compliance with terms of service, refer to the documentation provided by the respective browser vendors.
+* [JsBarcode](https://github.com/lindell/JsBarcode) Barcode generation library written in JavaScript that works in both the browser and on Node.js
 
 # License
 

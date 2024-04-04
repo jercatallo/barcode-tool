@@ -1,6 +1,6 @@
 {
   "name": "barcode-tool",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "lightweight npm package that utilizes the Barcode Detection API to enable barcode scanning directly in web browsers. Easily integrate barcode scanning functionality into your web applications for inventory management, product identification, and more.",
   "scripts": {
     "rollup": "rollup -c",
@@ -31,6 +31,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "rollup": "^2.60.0",
     "rollup-plugin-dts": "^4.0.1",
+    "tslib": "^2.6.2",
     "typescript": "^4.7.4"
   },
   "main": "dist/cjs/index.js",
@@ -62,5 +63,8 @@
     "itf",
     "pdf417",
     "aztec"
-  ]
+  ],
+  "dependencies": {
+    "jsbarcode": "^3.11.6"
+  }
 }

@@ -23,7 +23,7 @@ export async function detectBarcode({ image, formats }: DetectBarcodeParams): Pr
             rawValue: barcode.rawValue,
         }));
     } 
+
     throw new Error('Barcode Detection API is not supported in this browser');
-    
 }
 
