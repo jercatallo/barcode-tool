@@ -31,7 +31,7 @@ npm install barcode-tool
 or importing the package with script tag via JSDelivr CDN:
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.2/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.3/dist/cjs/index.js"></script>
 </head>
 ```
 
@@ -55,13 +55,14 @@ Name | Type | Description
 ```javascript
 import { detectBarcode } from 'barcode-tool';
 
-const imageElement = document.getElementById('barcode-image');
-
 const handleDetectBarcode = async () => {
     try {
+        const imageElement = document.getElementById('barcode-image');
+
          // Specify optional formats to detect
         const formats = ['ean_13', 'qr_code'];
         const barcodes = await detectBarcode({ image: imageElement, formats });
+        console.log("handleDetectBarcode ~ barcodes:", barcodes)
     } catch (error) {
         console.error('Error on detecting barcodes:', error.message);
     }
@@ -74,9 +75,9 @@ import { getSupportedFormats } from 'barcode-tool';
 const handleGetSupportedFormats = async () => {
     try {
         const supportedFormats = await getSupportedFormats();
-        console.log('Supported Formats:', supportedFormats);
+        console.log("handleGetSupportedFormats ~ supportedFormats:", supportedFormats)
     } catch (error) {
-        console.error('Error getting supported formats:', error.message);
+        console.log("handleGetSupportedFormats ~ error:", error)
     }
 }
 
@@ -85,7 +86,7 @@ const handleGetSupportedFormats = async () => {
 ## Sample usage with script tag
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.2/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.0.3/dist/cjs/index.js"></script>
 </head>
 
 
@@ -100,16 +101,16 @@ const handleGetSupportedFormats = async () => {
             const barcodes = await detectBarcode({ image: imageElement, formats });
             console.log("handleDetectBarcode ~ barcodes:", barcodes)
         } catch (error) {
-            console.error('Error on detecting barcodes:', error.message);
+            console.log("handleDetectBarcode ~ error:", error)
         }
     }
 
     const handleGetSupportedFormats = async () => {
         try {
             const supportedFormats = await getSupportedFormats();
-            console.log('Supported Formats:', supportedFormats);
+            console.log("handleGetSupportedFormats ~ supportedFormats:", supportedFormats)
         } catch (error) {
-            console.error('Error getting supported formats:', error.message);
+            console.log("handleGetSupportedFormats ~ error:", error)
         }
     }
     window.onload = function () {
@@ -135,6 +136,7 @@ This package utilizes the Barcode Detection API provided by modern web browsers 
 
 For more information on using web APIs and compliance with terms of service, refer to the documentation provided by the respective browser vendors.
 
-# MIT License
+# License
 
 See the [LICENSE](https://github.com/jercatallo/barcode-tool/blob/main/LICENSE) file
+
