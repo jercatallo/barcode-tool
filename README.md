@@ -58,14 +58,14 @@ yarn add barcode-tool
 or importing the package with script tag via JSDelivr CDN:
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.0/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.1/dist/cjs/index.js"></script>
 </head>
 ```
     
 Alternatively, you can import the package with a script tag using Unpkg CDN:
 ```html
 <head>
-    <script src="https://unpkg.com/barcode-tool@1.1.0/dist/cjs/index.js"></script>
+    <script src="https://unpkg.com/barcode-tool@1.1.1/dist/cjs/index.js"></script>
 </head>
 ```
 
@@ -177,7 +177,7 @@ const handleGenerateBarcode = () => {
 ## Sample usage with script tag
 ```html
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.0/dist/cjs/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.1/dist/cjs/index.js"></script>
 </head>
 
 
