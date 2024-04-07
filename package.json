@@ -53,12 +53,13 @@
     "barcode",
     "scanner",
     "detection",
+    "generator",
     "barcode-detection",
-    "web-api",
+    "barcode-generator",
+    "npm",
     "browser",
-    "data-matrix",
-    "ean-13",
-    "ean-8",
+    "barcode-detection-api",
+    "lightweight",
     "qr-code",
     "code-128",
     "code-39",
@@ -66,8 +67,7 @@
     "upc-e",
     "codabar",
     "itf",
-    "pdf417",
-    "aztec"
+    "qr-code-detection"
   ],
   "dependencies": {
     "jsbarcode": "^3.11.6"
