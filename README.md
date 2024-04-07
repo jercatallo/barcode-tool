@@ -1,6 +1,6 @@
 ## barcode-tool
 
-`barcode-tool` is a lightweight npm package that utilizes the Barcode Detection API to enable barcode scanning directly in web browsers. Easily integrate barcode scanning functionality into your web applications for inventory management, product identification, and more.
+`barcode-tool` is a lightweight npm package that facilitates barcode generation and detection. It leverages the Barcode Detection API for barcode scanning directly in web browsers and provides an intuitive interface for generating various barcode formats. Seamlessly integrate barcode functionality into your web applications for tasks such as inventory management, product identification, and more.
 
 ## Supported Barcode Detector Formats
 
@@ -20,23 +20,26 @@
 - unknown
 
 ## Supported Barcode Generator Formats
-- CODE128 (automatic mode switching)
-- CODE128 A/B/C (force mode)
-- EAN-13
-- EAN-8
-- EAN-5
-- EAN-2
-- UPC (A)
-- UPC (E)
 - CODE39
+- CODE128
+- CODE128A
+- CODE128B
+- CODE128C
+- EAN13
+- EAN8
+- EAN5
+- EAN2
+- UPC
+- UPCE
 - ITF
-- ITF-14
+- ITF14
 - MSI10
 - MSI11
 - MSI1010
 - MSI1110
-- Pharmacode
-- Codabar
+- pharmacode
+- codabar
+- GenericBarcode
 
 ## Installation
 
@@ -161,7 +164,6 @@ import { generateBarcode } from 'barcode-tool';
 
 const handleGenerateBarcode = () => {
     try {
-        const barcodeContainerElement = document.getElementById('barcode-container');
         const payload = { elementId: 'barcode-container', value: 'your-barcode-value' };
         const options = { /* your BarcodeOptions here */ };
         generateBarcode({ ...payload, options });
@@ -179,7 +181,8 @@ const handleGenerateBarcode = () => {
 </head>
 
 
-<img id="imageEl" src="your-image-element.jpg" />
+<img id="element-with-barcode" src="your-barcode.jpg" />
+<img id="barcode-container" src="" />
 
 <script>
     const handleDetectBarcode = async () => {
@@ -206,7 +209,6 @@ const handleGenerateBarcode = () => {
 
     const handleGenerateBarcode = () => {
         try {
-            const barcodeContainerElement = document.getElementById('barcode-container');
             const payload = { elementId: 'barcode-container', value: 'your-barcode-value' };
             const options = { /* your BarcodeOptions here */ };
             generateBarcode({ ...payload, options });

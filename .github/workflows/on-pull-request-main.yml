@@ -1,0 +1,32 @@
+name: On Pull Request to Main
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Application Dependencies
+        run: npm install
+
+      - name: Check Linting with ESLint
+        run: npm run lint
+
+      - name: Check Linting with ESLint
+        run: npm run test       
+
+      - name: Build Application
+        run: npm run build
+        

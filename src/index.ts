@@ -1,3 +1,3 @@
-export * from './detectBarcode';
-export * from './getSupportedFormats';
-export * from './generateBarcode';
+export * from './components/detectBarcode';
+export * from './components/getSupportedFormats';
+export * from './components/generateBarcode';
