@@ -1,7 +1,12 @@
 {
   "name": "barcode-tool",
   "version": "1.1.0",
-  "description": "lightweight npm package that utilizes the Barcode Detection API to enable barcode scanning directly in web browsers. Easily integrate barcode scanning functionality into your web applications for inventory management, product identification, and more.",
+  "description": "lightweight npm package that facilitates barcode generation and detection. It leverages the Barcode Detection API for barcode scanning directly in web browsers and provides an intuitive interface for generating various barcode formats. Seamlessly integrate barcode functionality into your web applications for tasks such as inventory management, product identification, and more.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jercatallo/barcode-tool"
+  },
+  "homepage": "https://github.com/jercatallo/barcode-tool#readme",
   "scripts": {
     "rollup": "rollup -c",
     "test": "jest",
